@@ -1,0 +1,25 @@
+PARAM:
+  experimento: ZZ6910-mayo-2021-sin-lags
+  exp_input: HT6510-mayo-2021-sin-lags
+  modelos_rank: 1.0
+  semillas:
+  - 123457.0
+  - 123401.0
+  - 123407.0
+  - 999959.0
+  - 999961.0
+  kaggle:
+    envios_desde: 8000
+    envios_hasta: 13500
+    envios_salto: 500
+  graficar:
+    envios_hasta: 20000
+    ventana_suavizado: 2001
+  home: ~/buckets/b1/
+time:
+  start: 20230523 082815
+  end: 20230523 094132
+status:
+  modelo_rank: 1.0
+  sem: 5
+ganancias_suavizadas: 3.3978714e+07
