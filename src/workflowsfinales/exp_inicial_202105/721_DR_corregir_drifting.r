@@ -120,46 +120,7 @@ AgregarVariables_IntraMes  <- function( dataset )
   dataset[ , vmr_mpagominimo         := vm_mpagominimo  / vm_mlimitecompra ]
 
   #Aqui debe usted agregar sus propias nuevas variables
-    #Agrego 31 variables 
-
-  dataset[ , vfe_limiteconsumo :=   vm_mlimitecompra / mpayroll ]
-  dataset[ , vfe_gasto_mas := vm_mconsumototal / mpayroll]
-  dataset[ , vfe_gasto_mas_edad := vm_mconsumototal / mpayroll_sobre_edad]
-    #creo un tipo cliente que tenga en cuenta cuando gasta mas de lo gana
-  dataset[  , vfe_tipocliente := vfe_gasto_mas ]
-  dataset[ vfe_gasto_mas < 0 , vfe_tipocliente := 0 ] #gasto menos de lo que gana
-  dataset[ vfe_gasto_mas = 1 , vfe_tipocliente := 1 ] #gasto todo de lo que gana
-  dataset[ vfe_gasto_mas > 0 , vfe_tipocliente := 2 ] #gasto mas de lo que gana
   
-  dataset[ , vfe_gasto_pago := vmr_mpagado / vmr_mconsumototal ] #ratio de ratio gasto mas de lo que gana
-  dataset[ , vfe_saldo_pago := vmr_msaldototal / vmr_mconsumototal ] #ratio Saldo vs consumo
-  dataset[ , vfe_limiteloco :=  vmr_Visa_mlimitecompra / vmr_Master_mlimitecompra ] #ratio loco entre los limites de master y visa
-  dataset[ , vfe_consumo_pagominimo :=  vm_cconsumos / vm_mpagominimo ] # Consumos vs pago minimo
-  
-  dataset[ , vfe_consumopesos_adelantopesos :=  vm_mconsumospesos / vm_madelantopesos ] # consumopesos sobre adelanto en pesos
-  dataset[ , vfe_consumodolares_adelantodolares :=  vm_mconsumosdolares / vm_madelantodolares ] # Consumo en dolares vs adelanto en dolares
-  dataset[ , vfe_fechadealta_iniciomora :=  vm_fechaalta / vm_Finiciomora ] # fecha de alta vs inicio de mora
-  dataset[ , vfe_ultimocierre_Fvencimiento :=  vm_fultimo_cierre / vm_Fvencimiento ] # Ultimo cierre vs fecha vencimiento
-  dataset[ , vfe_pagominimo_pagado :=  vm_mpagominimo / vm_mpagado ] # pago minimo vs pagado
-  dataset[ , vfe_fechaalta_fultimo_cierre :=  vm_fechaalta / vm_fultimo_cierre ] # fecha de alta vs fecha ultimo cierre
-  dataset[ , vfe_adelantoefectivo_pagominimo :=  vm_cadelantosefectivo / vm_mpagominimo ] # adelantos en efectivo vs pago minimo
-  dataset[ , vfe_pagominimo_consumototal :=  vm_mpagominimo / vm_mconsumototal ] # pago minimo vs consumo total
-  dataset[ , vfe_tarjetalimites_loco :=  Master_mlimitecompra/ Visa_mlimitecompra ] # limite_master vs limite visa
-  dataset[ , vfe_limitecompra_consumodolares :=  vm_mlimitecompra / vm_mconsumosdolares ] # limite de compra vs consumo en dolares
-  dataset[ , vfe_limitecompra_consumopesos :=  vm_mlimitecompra / vm_mconsumospesos ] # imite de compra vs consumo en pesos
-  dataset[ , vfe_pminimo_consdolares :=  vm_mpagominimo / vm_mconsumosdolares ] # pago minimo vs consumo en dolares
-  dataset[ , vfe_pminimo_conspesos :=  vm_mpagominimo / vm_mconsumospesos ] # pago minimo vs consumo en pesos
-  dataset[ , vfe_fechaalta_fechaultimocierre :=  vm_fechaalta / vm_fultimo_cierre ] # Fecha de alta fecha ultimo cierre
-  dataset[ , vfe_pago_pagominimo :=  vm_mpagado / vm_mpagominimo ] # pagado vs pagominimo
-  dataset[ , vfe_limitecompra_payroll_edad :=  vm_mlimitecompra / mpayroll_sobre_edad ] # limitecomprea payroll sobre edad
-  dataset[ , vfe_mpagominimo_payroll_edad :=  vm_mpagominimo / mpayroll_sobre_edad ] # Pago_minimo vs payroll_sobre_edad
-  dataset[ , vfe_pagado_payroll_edad :=  vmr_mpagado / mpayroll_sobre_edad ] # monto pagado sobre vs payroll_sobre_edad
-  dataset[ , vfe_consumos_payroll_edad :=  vm_cconsumos / mpayroll_sobre_edad ] # consumos vs payroll_sobre_edad
-  dataset[ , vfe_pagosdol_payroll_edad :=  vm_mpagosdolares / mpayroll_sobre_edad ] # pagos en dolares vs payroll_sobre_edad
-  dataset[ , vfe_pagospesos_payroll_edad :=  vm_mpagospesos / mpayroll_sobre_edad ] # pagos en pesos vs payroll_sobre_edad
-  dataset[ , vfe_adelantopesos_payroll_edad :=  vm_madelantopesos / mpayroll_sobre_edad ] # adelantos en pesos vs payroll_sobre_edad
-  dataset[ , vfe_adelantodolares_payroll_edad :=  vm_madelantodolares / mpayroll_sobre_edad ] # adelantos en dolares vs payroll_sobre_edad
-
   #valvula de seguridad para evitar valores infinitos
   #paso los infinitos a NULOS
   infinitos      <- lapply(names(dataset),function(.name) dataset[ , sum(is.infinite(get(.name)))])
