@@ -417,7 +417,22 @@ if( PARAM$lag1 )
   GrabarOutput()
 }
 
+#--------------------------------------------------------------------------
+#Elimino las variables que no son tan importantes en el dataset
+# with great power comes grest responsability
 
+if( PARAM$CanaritosAsesinos$ratio > 0.0)
+{
+  OUTPUT$CanaritosAsesinos$ncol_antes  <- ncol(dataset)
+  CanaritosAsesinos( canaritos_ratio= PARAM$CanaritosAsesinos$ratio,
+                     canaritos_desvios= PARAM$CanaritosAsesinos$desvios,
+                     canaritos_semilla=  PARAM$CanaritosAsesinos$semilla )
+
+  OUTPUT$CanaritosAsesinos$ncol_despues  <- ncol(dataset)
+  GrabarOutput()
+}
+
+#------------------------------------------------------------------------------
 if( PARAM$lag2 )
 {
   #creo los campos lags de orden 2
@@ -435,7 +450,22 @@ if( PARAM$lag2 )
   OUTPUT$lag2$ncol_despues  <- ncol(dataset)
   GrabarOutput()
 }
+#--------------------------------------------------------------------------
+#Elimino las variables que no son tan importantes en el dataset
+# with great power comes grest responsability
 
+if( PARAM$CanaritosAsesinos$ratio > 0.0)
+{
+  OUTPUT$CanaritosAsesinos$ncol_antes  <- ncol(dataset)
+  CanaritosAsesinos( canaritos_ratio= PARAM$CanaritosAsesinos$ratio,
+                     canaritos_desvios= PARAM$CanaritosAsesinos$desvios,
+                     canaritos_semilla=  PARAM$CanaritosAsesinos$semilla )
+
+  OUTPUT$CanaritosAsesinos$ncol_despues  <- ncol(dataset)
+  GrabarOutput()
+}
+
+#------------------------------------------------------------------------------
 
 if( PARAM$lag3 )
 {
@@ -455,7 +485,22 @@ if( PARAM$lag3 )
   GrabarOutput()
 }
 
+#--------------------------------------------------------------------------
+#Elimino las variables que no son tan importantes en el dataset
+# with great power comes grest responsability
 
+if( PARAM$CanaritosAsesinos$ratio > 0.0)
+{
+  OUTPUT$CanaritosAsesinos$ncol_antes  <- ncol(dataset)
+  CanaritosAsesinos( canaritos_ratio= PARAM$CanaritosAsesinos$ratio,
+                     canaritos_desvios= PARAM$CanaritosAsesinos$desvios,
+                     canaritos_semilla=  PARAM$CanaritosAsesinos$semilla )
+
+  OUTPUT$CanaritosAsesinos$ncol_despues  <- ncol(dataset)
+  GrabarOutput()
+}
+
+#------------------------------------------------------------------------------
 #--------------------------------------
 #agrego las tendencias
 
