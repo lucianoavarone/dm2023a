@@ -22,9 +22,9 @@ require("lightgbm")
 
 #Parametros del script
 PARAM  <- list()
-PARAM$experimento <- "FE7310_3_202109"
+PARAM$experimento <- "FE7310_4_202109"
 
-PARAM$exp_input  <- "DR7210_3_202109"
+PARAM$exp_input  <- "DR7210_4_202109"
 
 PARAM$lag1  <- TRUE
 PARAM$lag2  <- TRUE
@@ -35,7 +35,7 @@ PARAM$Tendencias1$ventana  <- 6
 PARAM$Tendencias1$tendencia  <- TRUE
 PARAM$Tendencias1$minimo  <- FALSE
 PARAM$Tendencias1$maximo  <- FALSE
-PARAM$Tendencias1$promedio  <- TRUE
+PARAM$Tendencias1$promedio  <- FALSE
 PARAM$Tendencias1$ratioavg  <- FALSE
 PARAM$Tendencias1$ratiomax  <- FALSE
 
@@ -417,6 +417,7 @@ if( PARAM$lag1 )
   GrabarOutput()
 }
 
+#--------------------------------------------------------------------------
 
 
 #------------------------------------------------------------------------------
@@ -453,6 +454,8 @@ if( PARAM$CanaritosAsesinos$ratio > 0.0)
 }
 
 #------------------------------------------------------------------------------
+cols_lagueables  <- intersect( cols_lagueables, colnames(dataset) )
+
 
 if( PARAM$lag3 )
 {
@@ -471,10 +474,10 @@ if( PARAM$lag3 )
   OUTPUT$lag3$ncol_despues  <- ncol(dataset)
   GrabarOutput()
 }
+
 #--------------------------------------------------------------------------
 
 #------------------------------------------------------------------------------
-
 #--------------------------------------
 #agrego las tendencias
 

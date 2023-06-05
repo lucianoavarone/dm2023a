@@ -418,20 +418,6 @@ if( PARAM$lag1 )
 }
 
 #--------------------------------------------------------------------------
-#Elimino las variables que no son tan importantes en el dataset
-# with great power comes grest responsability
-
-if( PARAM$CanaritosAsesinos$ratio > 0.0)
-{
-  OUTPUT$CanaritosAsesinos$ncol_antes  <- ncol(dataset)
-  CanaritosAsesinos( canaritos_ratio= PARAM$CanaritosAsesinos$ratio,
-                     canaritos_desvios= PARAM$CanaritosAsesinos$desvios,
-                     canaritos_semilla=  PARAM$CanaritosAsesinos$semilla )
-
-  OUTPUT$CanaritosAsesinos$ncol_despues  <- ncol(dataset)
-  GrabarOutput()
-}
-
 #------------------------------------------------------------------------------
 
 if( PARAM$lag2 )
@@ -453,6 +439,7 @@ if( PARAM$lag2 )
 }
 
 #--------------------------------------------------------------------------
+#--------------------------------------------------------------------------
 #Elimino las variables que no son tan importantes en el dataset
 # with great power comes grest responsability
 
@@ -468,6 +455,7 @@ if( PARAM$CanaritosAsesinos$ratio > 0.0)
 }
 
 #------------------------------------------------------------------------------
+cols_lagueables  <- intersect( cols_lagueables, colnames(dataset) )
 
 if( PARAM$lag3 )
 {
@@ -488,19 +476,6 @@ if( PARAM$lag3 )
 }
 
 #--------------------------------------------------------------------------
-#Elimino las variables que no son tan importantes en el dataset
-# with great power comes grest responsability
-
-if( PARAM$CanaritosAsesinos$ratio > 0.0)
-{
-  OUTPUT$CanaritosAsesinos$ncol_antes  <- ncol(dataset)
-  CanaritosAsesinos( canaritos_ratio= PARAM$CanaritosAsesinos$ratio,
-                     canaritos_desvios= PARAM$CanaritosAsesinos$desvios,
-                     canaritos_semilla=  PARAM$CanaritosAsesinos$semilla )
-
-  OUTPUT$CanaritosAsesinos$ncol_despues  <- ncol(dataset)
-  GrabarOutput()
-}
 
 #------------------------------------------------------------------------------
 #--------------------------------------
