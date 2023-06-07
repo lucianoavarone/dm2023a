@@ -22,9 +22,9 @@ require("lightgbm")
 
 #Parametros del script
 PARAM  <- list()
-PARAM$experimento <- "FE7310_1_202107"
+PARAM$experimento <- "FE7310_1_202109_corregido"
 
-PARAM$exp_input  <- "DR7210_1_202107"
+PARAM$exp_input  <- "DR7210_1_202109_corregido"
 
 PARAM$lag1  <- TRUE
 PARAM$lag2  <- TRUE
@@ -56,7 +56,7 @@ PARAM$RandomForest$min.node.size  <- 1000
 PARAM$RandomForest$mtry  <- 10
 PARAM$RandomForest$semilla  <- 123457     # cambiar por la propia semilla
 
-PARAM$CanaritosAsesinos$ratio  <- 0.5        #varia de 0.0 a 2.0, si es 0.0 NO se activan
+PARAM$CanaritosAsesinos$ratio  <- 1      #varia de 0.0 a 2.0, si es 0.0 NO se activan
 PARAM$CanaritosAsesinos$desvios  <- 4.0      #desvios estandar de la media, para el cutoff
 PARAM$CanaritosAsesinos$semilla  <- 123457    # cambiar por la propia semilla
 
@@ -418,8 +418,9 @@ if( PARAM$lag1 )
 }
 
 #--------------------------------------------------------------------------
-#------------------------------------------------------------------------------
 
+
+#------------------------------------------------------------------------------
 if( PARAM$lag2 )
 {
   #creo los campos lags de orden 2
@@ -437,8 +438,6 @@ if( PARAM$lag2 )
   OUTPUT$lag2$ncol_despues  <- ncol(dataset)
   GrabarOutput()
 }
-
-#--------------------------------------------------------------------------
 #--------------------------------------------------------------------------
 #Elimino las variables que no son tan importantes en el dataset
 # with great power comes grest responsability
@@ -456,6 +455,7 @@ if( PARAM$CanaritosAsesinos$ratio > 0.0)
 
 #------------------------------------------------------------------------------
 cols_lagueables  <- intersect( cols_lagueables, colnames(dataset) )
+
 
 if( PARAM$lag3 )
 {

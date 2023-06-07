@@ -20,8 +20,8 @@ require("lightgbm")
 
 #Parametros del script
 PARAM  <- list()
-PARAM$experimento  <- "ZZ7950_1_202107"
-PARAM$exp_input  <- "HT7510_1_202107"
+PARAM$experimento  <- "ZZ7950_1_202109_corregido"
+PARAM$exp_input  <- "HT7510_1_202109_corregido"
 
 PARAM$modelos_rank  <- c( 1 )  #Que modelos quiero, segun su posicion en el ranking e la Bayesian Optimizacion, ordenado por ganancia descendente
 PARAM$semillerio  <- 50   # cantidad de semillas a utilizar en el semillerio, podrian ser 50 o 100 para mayor estabilidad

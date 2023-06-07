@@ -16,9 +16,9 @@ require("yaml")
 
 #Parametros del script
 PARAM  <- list()
-PARAM$experimento  <- "DR7210_1_202105"
+PARAM$experimento  <- "DR7210_1_202109_corregido"
 
-PARAM$exp_input  <- "CA7110_1_202105"
+PARAM$exp_input  <- "CA7110_1_202109_corregido"
 
 PARAM$variables_intrames  <- TRUE   # atencion esto esta en TRUE
 
@@ -120,7 +120,7 @@ AgregarVariables_IntraMes  <- function( dataset )
   dataset[ , vmr_mpagominimo         := vm_mpagominimo  / vm_mlimitecompra ]
 
   #Aqui debe usted agregar sus propias nuevas variables
-    #Agrego 31 variables 
+  #Agrego 31 variables 
 
   dataset[ , vfe_limiteconsumo :=   vm_mlimitecompra / mpayroll ]
   dataset[ , vfe_gasto_mas := vm_mconsumototal / mpayroll]
@@ -159,7 +159,7 @@ AgregarVariables_IntraMes  <- function( dataset )
   dataset[ , vfe_pagospesos_payroll_edad :=  vm_mpagospesos / mpayroll_sobre_edad ] # pagos en pesos vs payroll_sobre_edad
   dataset[ , vfe_adelantopesos_payroll_edad :=  vm_madelantopesos / mpayroll_sobre_edad ] # adelantos en pesos vs payroll_sobre_edad
   dataset[ , vfe_adelantodolares_payroll_edad :=  vm_madelantodolares / mpayroll_sobre_edad ] # adelantos en dolares vs payroll_sobre_edad
-
+  
   #valvula de seguridad para evitar valores infinitos
   #paso los infinitos a NULOS
   infinitos      <- lapply(names(dataset),function(.name) dataset[ , sum(is.infinite(get(.name)))])
