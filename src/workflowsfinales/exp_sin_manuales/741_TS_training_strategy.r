@@ -31,7 +31,7 @@ PARAM$train$validation   <- c( 202105 )
 PARAM$train$testing      <- c( 202106,202107 )
 
 # Atencion  0.4  de  undersampling de la clase mayoritaria,  los CONTINUA
-PARAM$train$undersampling  <- 0.4  # 1.0 significa NO undersampling ,  0.1  es quedarse con el 10% de los CONTINUA
+PARAM$train$undersampling  <- 0.25  # 1.0 significa NO undersampling ,  0.1  es quedarse con el 10% de los CONTINUA
 
 PARAM$train$semilla  <- 123457   # cambiar por su propia semilla  !!!
 
